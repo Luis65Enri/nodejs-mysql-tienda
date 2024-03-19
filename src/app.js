@@ -10,6 +10,7 @@ app.use(cors({
     origin: 'http://localhost:8081', // Origen permitido para las solicitudes
     methods: ['GET', 'POST'] // Métodos permitidos
 }));
+app.set('port', port);
 app.use(morgan('common'));
 app.use(express.urlencoded({extended:false}));
 app.use(express.json());
@@ -29,5 +30,6 @@ app.use('/api/detalle/compra', require('./rutas/ruta_detalle_factura_compra.js')
 app.use('/inicio',require('./rutas/ruta_login'));
 
 //-----Fin rutas-----//
-app.listen(port)
-console.log('Servidor', port)
+app.listen(app.get('port'), () => {
+    console.log('Servidor iniciado en el puerto ' + app.get('port'));
+});
