@@ -1,6 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
+const { port } = require('./configuraciones/config.js');
 
 const sincronizarModelos = require('./configuraciones/sincronizar-modelos.js');//modelos creados en documento externo
 
@@ -9,7 +10,6 @@ app.use(cors({
     origin: 'http://localhost:8081', // Origen permitido para las solicitudes
     methods: ['GET', 'POST'] // Métodos permitidos
 }));
-app.set('port', 3001);
 app.use(morgan('common'));
 app.use(express.urlencoded({extended:false}));
 app.use(express.json());
@@ -29,6 +29,5 @@ app.use('/api/detalle/compra', require('./rutas/ruta_detalle_factura_compra.js')
 app.use('/inicio',require('./rutas/ruta_login'));
 
 //-----Fin rutas-----//
-app.listen(app.get('port'), () => {
-    console.log('Servidor iniciado en el puerto ' + app.get('port'));
-});
+app.listen(port)
+console.log('Servidor', port)
