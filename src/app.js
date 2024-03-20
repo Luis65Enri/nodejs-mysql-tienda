@@ -1,7 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
-const { port } = require('./configuraciones/config');
+const port  = require('./configuraciones/config');
 
 const sincronizarModelos = require('./configuraciones/sincronizar-modelos.js');//modelos creados en documento externo
 
