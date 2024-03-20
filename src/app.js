@@ -1,25 +1,3 @@
-// Environment variables and Sequelize configuration
-const port = process.env.PORT || 3000;
-const DB_HOST = process.env.DB_HOST || 'localhost';
-// Other environment variables...
-
-const sequelize = require('sequelize');
-const { DB_HOST, DB_USER, DB_NAME, DB_PASSWORD, DB_PORT } = require('./config.js');
-
-const database = new sequelize(
-    DB_NAME,
-    DB_USER,
-    DB_PASSWORD,
-    {
-        host: DB_HOST,
-        dialect: 'mysql',
-        port: DB_PORT
-    }
-);
-
-module.exports = database;
-
-// Express application setup
 const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
