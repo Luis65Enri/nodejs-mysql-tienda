@@ -1,35 +1,45 @@
+// Environment variables and Sequelize configuration
+const port = process.env.PORT || 3000;
+const DB_HOST = process.env.DB_HOST || 'localhost';
+// Other environment variables...
+
+const sequelize = require('sequelize');
+const { DB_HOST, DB_USER, DB_NAME, DB_PASSWORD, DB_PORT } = require('./config.js');
+
+const database = new sequelize(
+    DB_NAME,
+    DB_USER,
+    DB_PASSWORD,
+    {
+        host: DB_HOST,
+        dialect: 'mysql',
+        port: DB_PORT
+    }
+);
+
+module.exports = database;
+
+// Express application setup
 const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
-const port  = require('./configuraciones/config');
-
-const sincronizarModelos = require('./configuraciones/sincronizar-modelos.js');//modelos creados en documento externo
+const { PORT } = require('./configuraciones/config');
 
 const app = express();
 app.use(cors({
-    origin: 'http://localhost:8081', // Origen permitido para las solicitudes
-    methods: ['GET', 'POST'] // Métodos permitidos
+    origin: 'http://localhost:8081',
+    methods: ['GET', 'POST']
 }));
-app.set('port', port);
+app.set('port', PORT);
 app.use(morgan('common'));
 app.use(express.urlencoded({extended:false}));
 app.use(express.json());
-//-----Rutas-----//
-app.use('/api/', require('./rutas'));
-app.use('/api/usuario', require('./rutas/ruta_usuario'));
-app.use('/api/proveedor', require('./rutas/ruta_proveedores.js'));
-app.use('/api/servicio', require('./rutas/ruta_servicios.js'));
-app.use('/api/marca', require('./rutas/ruta_marca'));
-app.use('/api/rol', require('./rutas/ruta_rol-cuenta'));
-app.use('/api/categoria', require('./rutas/ruta_categorias.js'));
-app.use('/api/producto', require('./rutas/ruta_producto'));
-app.use('/api/factura/venta', require('./rutas/ruta_factura_venta.js'));
-app.use('/api/factura/compra', require('./rutas/ruta_factura_compra.js'));
-app.use('/api/detalle/venta', require('./rutas/ruta_detalle_factura_venta.js'));
-app.use('/api/detalle/compra', require('./rutas/ruta_detalle_factura_compra.js'));
-app.use('/inicio',require('./rutas/ruta_login'));
 
-//-----Fin rutas-----//
+// Routing
+app.use('/api/', require('./rutas'));
+// Other routes...
+
+// Listening for requests
 app.listen(app.get('port'), () => {
     console.log('Servidor iniciado en el puerto ' + app.get('port'));
 });
