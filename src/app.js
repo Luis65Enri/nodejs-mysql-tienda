@@ -10,7 +10,7 @@ app.use(cors({
     origin: 'http://localhost:8081', // Origen permitido para las solicitudes
     methods: ['GET', 'POST'] // Métodos permitidos
 }));
-app.set('port', PORT);
+app.set('port', 3001);
 app.use(morgan('common'));
 app.use(express.urlencoded({extended:false}));
 app.use(express.json());
