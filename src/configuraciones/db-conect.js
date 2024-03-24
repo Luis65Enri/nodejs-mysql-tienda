@@ -11,7 +11,7 @@ const database = new sequelize(
         port: DB_PORT, // Puerto de la base de datos
         logging: console.log,
         dialectOptions: {
-            connectTimeout: 30000 // Tiempo de espera en milisegundos
+            connectTimeout: 300000 // Tiempo de espera en milisegundos
         }
     }
 );
