@@ -8,8 +8,10 @@ const database = new sequelize(
     {
         host: 'localhost',
         dialect: 'mysql',
-        port: 3306
+        port: 3306,
+        logging: console.log
     }
+    
 );
 
 module.exports = database;
