@@ -9,7 +9,10 @@ const database = new sequelize(
         host: DB_HOST, // Host de la base de datos
         dialect: 'mysql',
         port: DB_PORT, // Puerto de la base de datos
-        logging: console.log
+        logging: console.log,
+        dialectOptions: {
+            connectTimeout: 30000 // Tiempo de espera en milisegundos
+        }
     }
 );
 
