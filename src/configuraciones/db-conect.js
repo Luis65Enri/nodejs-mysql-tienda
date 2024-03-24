@@ -3,8 +3,8 @@ const { DB_HOST, DB_USER, DB_NAME, DB_PASSWORD, DB_PORT } = require('./config.js
 
 const database = new sequelize(
     'db_tienda',
-    'root',
-    'Luis12345%',
+    'unicah',
+    'Unicah123%',
     {
         host: 'localhost',
         dialect: 'mysql',
