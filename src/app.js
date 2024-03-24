@@ -7,8 +7,7 @@ const sincronizarModelos = require('./configuraciones/sincronizar-modelos.js');/
 
 const app = express();
 app.use(cors({
-    origin: 'http://localhost:8081', // Origen permitido para las solicitudes
-    methods: ['GET', 'POST'] // Métodos permitidos
+    methods: ['GET', 'POST']
 }));
 
 app.set('port', PORT);
