@@ -1,8 +1,8 @@
 const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
-const { PORT }  = require('./configuraciones/config');
 
+const PORT = process.env.PORT || 3001;
 const sincronizarModelos = require('./configuraciones/sincronizar-modelos.js');//modelos creados en documento externo
 
 const app = express();
@@ -10,7 +10,8 @@ app.use(cors({
     origin: 'http://localhost:8081', // Origen permitido para las solicitudes
     methods: ['GET', 'POST'] // Métodos permitidos
 }));
-app.set('port', 3001);
+
+app.set('port', PORT);
 app.use(morgan('common'));
 app.use(express.urlencoded({extended:false}));
 app.use(express.json());
