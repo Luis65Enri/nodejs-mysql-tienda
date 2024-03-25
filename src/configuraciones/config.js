@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-const DB_HOST = process.env.DB_HOST || 'monorail.proxy.rlwy.net'
+const DB_HOST = process.env.DB_HOST || '192.168.3.194'
 console.log(`DB_HOST: ${DB_HOST}`);
 
 const DB_USER = process.env.DB_USER || 'root'
