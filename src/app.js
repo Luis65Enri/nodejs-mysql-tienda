@@ -2,8 +2,9 @@ const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
 
-const PORT = process.env.PORT || 3001;
-const sincronizarModelos = require('./configuraciones/sincronizar-modelos.js');//modelos creados en documento externo
+const PORT = process.env.PORT || 3000;
+
+const sincronizarModelos = require('./configuraciones/sincronizar-modelos.js');
 
 const app = express();
 app.use(cors({
